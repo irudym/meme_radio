@@ -1,0 +1,22 @@
+<h2 class="text-xl">
+    Welcome to the MEME Radio.
+</h2> 
+<p class="py-4">
+    Our best AI radio host will describe meme for you. 
+    Just upload your meme.
+</p>
+
+<div>
+    <form id="upload-form" phx-submit="save" phx-change="validate">
+        <.live_file_input upload={@uploads.photo} />
+        <div class="my-4">
+            <.button type="submit">Upload</.button>
+        </div>
+    </form>
+    <p :if={@loading}>
+        <.icon name="hero-arrow-path" class="animate-spin h-5 w-5" /> Loading...
+    </p>
+    <p class="leading-8">
+        <%= @result %>
+    </p>
+</div>
