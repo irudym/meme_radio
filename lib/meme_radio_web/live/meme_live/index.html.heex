@@ -1,15 +1,20 @@
-<h2 class="text-xl">
+<h2 class="text-xl my-8">
     Welcome to the MEME Radio.
 </h2> 
-<p class="py-4">
+<div class="py-5">
     Our best AI radio host will describe meme for you. 
     Just upload your meme.
-</p>
+</div>
 
-<div>
+<div class="py-4">
     <form id="upload-form" phx-submit="save" phx-change="validate">
         <.live_file_input upload={@uploads.photo} />
-        <div class="my-4">
+        <%= for entry <- @uploads.photo.entries do %>
+            <div class="py-4">
+                <.live_img_preview entry={entry} width="256" class="rounded"/>
+            </div>
+        <% end %>
+        <div class="my-4 py-5">
             <.button type="submit">Upload</.button>
         </div>
     </form>
